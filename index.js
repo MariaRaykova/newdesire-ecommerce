@@ -9,10 +9,10 @@ app.use(function(req, res, next) {
 });
 //     prevents cors headaches when your react app calls your api
 // serves the built version of your react app
-// app.use(express.static(path.join(__dirname, 'client/build')))
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname + '/client/build/index.html'))
-// })
+app.use(express.static(path.join(__dirname, 'client/build')))
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/client/build/index.html'))
+})
 dbConnection().then(() => {
   
     require('./config/express')(app);
