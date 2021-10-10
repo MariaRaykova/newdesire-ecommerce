@@ -1,0 +1,304 @@
+@mixin bp($point) {
+    @if $point==desktop-large {
+        @media (min-width: 1600px) {
+            @content;
+        }
+    } @else if $point==desktop {
+        @media (min-width: 1250px) {
+            @content;
+        }
+    } @else if $point==laptop {
+        @media (min-width: 1024px) {
+            @content;
+        }
+    } @else if $point==mobile {
+        @media (max-width: 1023px) {
+            @content;
+        }
+    } @else if $point==phone {
+        @media (max-width: 650px) {
+            @content;
+        }
+    }
+}
+
+header {
+    background-color: var(--color-pink-default);
+    color: var(--color-blue-default, white);
+    border-bottom: 2px solid var(--color-blue-default, white);
+    display: flex;
+    // flex-flow: column wrap;
+    // justify-content: space-around;
+    // align-items: center;
+    // position: relative;
+    min-height: 100px;
+    // width: 100%;
+    margin: 0 auto;
+    // padding: 20px 0;
+    justify-content: space-around;
+    align-items: center;
+    a {
+        text-decoration: none;
+        color:  var(--color-blue-default, white);
+    }
+    .logo {
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+        color: var(--color-blue-default, white);
+        .logo-nd{
+            font-family:'Grey Qo', cursive;
+            font-size: 50px;
+            // @font-face {
+            //     font-family: "Blackstand";
+            //     font-style: normal;
+            //     font-weight: normal;
+            //     font-weight: bold;
+            //     src: font("Blackstand"), url("../../font/Blackstand.woff") format("woff");
+            // }
+        }
+        color: var(--color-blue-default, white);
+    }
+
+    @include bp(mobile) {
+        #menuToggle {
+            display: block;
+            z-index: 3;
+            width: 10%;
+        }
+        .logo {
+            width: 50%;
+        }
+        .header-buttons {
+            width: 30%;
+        }
+        nav {
+            display: none;
+        }
+        .second-bar {
+            display: none;
+        }
+    }
+}
+
+
+.logo-boutique {
+    font-family: "Cinzel", serif;
+    font-size: 15px;
+    text-align: end;
+}
+
+.btn {
+    border-radius: 20px;
+    padding: 12px 24px;
+    font-size: 14px;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+.search {
+    background-color: lightpink;
+    flex: 1 1 auto;
+    /*или съкратено flex: 1*/
+    display: inline-flex;
+    margin: 0 20px;
+}
+
+.search input {
+    flex: 1;
+    /*съкратено от flex: 1 1 auto – ще се разшири до края на контейнера, а flex: 0 1 auto колкото е content */
+    background: transparent;
+    border-radius: 10px;
+}
+
+#menuToggle {
+    display: none;
+    position: relative;
+    top: 0px;
+    left: 0px;
+
+    z-index: 1;
+
+    -webkit-user-select: none;
+    user-select: none;
+
+    // link-овете в падащото меню
+    a {
+        text-decoration: none;
+        color: #232323;
+        transition: color 0.3s ease;
+        // &:hover {
+        //     color: tomato;
+        // }
+    }
+
+    input {
+        display: block;
+        width: 40px;
+        height: 32px;
+        position: absolute;
+        top: -7px;
+        left: -5px;
+
+        cursor: pointer;
+
+        opacity: 0;
+        /* hide this */
+        z-index: 2;
+        /* and place it over the hamburger */
+
+        &:checked ~ span {
+            opacity: 1;
+            transform: rotate(45deg) translate(-2px, -1px);
+            background: #232323;
+        }
+        &:checked ~ span:nth-last-child(3) {
+            opacity: 0;
+            transform: rotate(0deg) scale(0.2, 0.2);
+        }
+        &:checked ~ span:nth-last-child(2) {
+            transform: rotate(-45deg) translate(0, -1px);
+        }
+
+        /*  And let's slide it in from the left */
+        &:checked ~ ul {
+            transform: none;
+        }
+    }
+    span {
+        display: block;
+        width: 33px;
+        height: 4px;
+        margin-bottom: 5px;
+        position: relative;
+
+        background: #cdcdcd;
+        border-radius: 3px;
+
+        z-index: 1;
+
+        transform-origin: 4px 0px;
+
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+            opacity 0.55s ease;
+
+        &:first-child {
+            transform-origin: 0% 0%;
+        }
+
+        &:nth-last-child(2) {
+            transform-origin: 0% 100%;
+        }
+    }
+}
+/* Make this absolute positioned at the top left of the screen */
+#menu {
+    position: absolute;
+    width: 300px;
+    height: 100vh;
+    margin: -125px 0 -70px -70px;
+    padding: 70px;
+    padding-top: 125px;
+    background: var(--color-pink-default);
+    list-style-type: none;
+    /* to stop flickering of text in safari */
+
+    transform-origin: 0% 0%;
+    transform: translate(-100%, 0);
+
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+    .sidebar-header {
+        padding: 20px 0;
+        border-bottom: 2px solid var(--color-blue-default);
+    }
+    li {
+        padding: 10px 0;
+        font-size: 22px;
+    }
+}
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    a {
+        text-decoration: none;
+        color: var(--color-blue-default, white);
+        font-size: 18px;
+    }
+}
+
+.site-header nav ul {
+    display: flex;
+    flex-flow: row wrap;
+    /*главната аксиса е хоризонтала,ако няма место на реда ще минат на нов ред, иначе ще overflow-ва*/
+    justify-content: center;
+    /*всички елементи по главната аксиса отиват в центъра*/
+    @include bp(mobile) {
+        flex-wrap: wrap;
+        li {
+            flex-basis: 100%;
+            margin-bottom: 0.5em;
+        }
+    }
+}
+
+nav li {
+    margin-right: 15px;
+}
+.header-buttons {
+    display: flex;
+    align-items: center;
+
+    .fa-search,
+    .fa-shopping-cart,
+    .fa-user,
+    .fa-sign-out-alt {
+        color: white;
+        margin-right: 20px;
+        font-size: 25px;
+    }
+    .show-icon {
+        display: none;
+    }
+    @include bp(mobile) {
+        .show-icon {
+            display: block;
+            color: white;
+            margin-right: 20px;
+            font-size: 25px;
+        }
+    }
+    .fa-shopping-cart sub {
+        color: var(--color-blue-default, white);
+        position: relative;
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        top: -7px;
+        left: 2px;
+        vertical-align: middle;
+        text-align: center;
+        border-radius: 100%;
+        background: white;
+        line-height: 14px;
+    }
+    .fa-shopping-cart small button {
+        margin-right: 10px;
+    }
+}
+header .content-limiter {
+    /*деца са му logo-wrapper and nav-wrapper*/
+    flex: 1;
+    /*1 grow, 1 shrink auto - разпъват се на максимум елементите вътре */
+    /* вертикално, защото parent-а header е column wrap */
+    display: flex;
+    flex-flow: row wrap;
+    /*хоризонтала, за да подредим логото и nav хоризонтално по-надолу - МАЙ е излишно, защото дефолтно е хоризонтално, а долу с flex:1 сме дали да се разпъват максимално и да се свиват...няма нужда от wrap*/
+    justify-content: space-around;
+    /*манипулира празното пространство между елементите*/
+    align-items: center;
+    /*за да са центрирани и по вертикала*/
+    width: 100%;
+}

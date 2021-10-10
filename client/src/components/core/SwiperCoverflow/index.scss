@@ -1,0 +1,57 @@
+
+.coverflow-image {
+  position: relative;
+  color:var(--color-pink-default, lightgrey);
+  // width: 300px;
+  // height: 300px;
+}
+.vl{
+border-left: 4px solid var(--color-pink-default, lightgrey);
+height: 80%;
+
+position: absolute;
+left: 7%;
+top: 7%;
+z-index: 2;
+}
+.hl {
+  border-top: 4px solid  var(--color-pink-default, lightgrey);
+  width: 80%;
+  position: absolute;
+  top: 7%;
+  left: 7%;
+ z-index: 2;
+}
+
+  .semi-transparent-button {
+    position:absolute;
+    top: 35%;
+    left:35%;
+    margin: 0 auto;
+    padding: 1em;
+    height: 15%;
+    width: 80%;
+    max-width: 8em;
+    background: #fff; /* fallback color for old browsers */background: rgba(255, 255, 255, 0.5);
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: all 0.3s ease-out;
+    border: none;
+    
+  }
+  .btn-text{
+    padding-top:0.8em;
+    display:flex;
+   justify-content: center;
+  }
+.title {
+  position: absolute;
+  bottom: 7px;
+  right: 7%;
+  z-index:1;
+  padding-left: 15%;
+  color:var(--color-pink-default, lightgrey);
+}
+

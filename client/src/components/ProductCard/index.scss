@@ -1,0 +1,194 @@
+// .card {
+//     margin         : 20px;
+//     display        : flex;
+//     /*подрежда заглавие, съдърж.и фуутър на един ред*/
+//     justify-content: center;
+//     align-items    : stretch;
+//     border         : 1px solid white;
+//     overflow       : hidden;
+// }
+.one-fourth {
+    max-width: 25%;
+    display: flex;
+    flex-shrink: shrink;
+    flex-wrap: wrap;
+    border: 3px solid transparent;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    transition: border-color .2s;
+    color: var(--color-blue-default);
+    margin-top: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.one-fourth:hover{
+    border-color: var(--color-pink-default);
+
+}
+.product-image {
+    margin-bottom: 10px;
+    position: relative;
+    perspective: 1000px;
+    overflow: hidden;
+    // width: 100%;
+    // height: 250px;
+    .product-name {
+        border-bottom: 1px solid;
+        border-color: var(--color-blue-default);
+        padding-bottom: 6px;
+        margin-bottom: 4px;
+    }
+}
+.product-info {
+    position: relative;
+}
+
+.product-bar {
+    font-size: 14px;
+    position: relative;
+}
+.product-options {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+.product-price {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: calc(14px - 2px);
+    font-weight: 700;
+    color: var(--color-blue-default);
+    direction: ltr;
+    text-align: left;
+    transition: .2s;
+}
+
+.product-add ._button {
+    background-color: transparent;
+    color: #000;
+    width: auto;
+    padding: 0;
+    font-size: 0;
+    text-align: right;
+    display: table-cell;
+    vertical-align: middle;
+    width: 70px;
+}
+.card{
+    box-shadow: 0 0 8px 0 black;
+    // border-radius: 12px;
+    display:flex;
+    flex-direction: column;
+    min-width: 250px;
+    padding: 10px;
+    margin: 10px;
+
+}
+.card header:nth-child(2){ /*2 в скобите незнайно защо го направи на заглавието*/
+    flex-grow:1; /*втория чайлд в картичката - съдържанието да се разпъне до колкото може и да избура footer-a*/
+  
+}
+
+.card footer{
+    border-top: 1px solid darkgray;
+}
+.layout-flex{
+    display:flex;
+    /*да минават на нов ред*/
+    flex-wrap:wrap;
+    margin: 30px auto; /*30 отгоре и отдолу и то да е центрирано по средата*/
+   justify-content: center;
+}
+.card {
+    width: 30%;
+    border: 1px solid transparent;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 30px;
+}
+.card img {
+    margin-bottom: 10px;
+    position: relative;
+    perspective: 1000px;
+}
+.description {
+    flex-basis     : 50%;
+    display        : flex;
+    flex-flow      : column wrap;
+    justify-content: space-around;
+    align-items    : flex-start;
+    padding-left   : 40px;
+
+}
+
+.article-header .article-footer {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+}
+
+.article-header-name {
+    font-size    : var(--font-size-body-huge);
+    font-weight  : 700;
+    border-bottom: 2px solid white;
+    padding      : 10px;
+}
+
+.details-header {
+    font-size  : var(--font-size-body-huge);
+    font-weight: 700;
+}
+
+.article-price {
+    padding: 10px;
+}
+
+.article-footer {
+    padding   : 10px;
+    border-top: 2px solid white;
+}
+
+.card .body {
+    padding       : 5px;
+    flex-basis    : 50%;
+    display       : flex;
+    flex-direction: column;
+}
+
+.images-small-wrapper {
+    display    : flex;
+    align-items: center;
+}
+
+.image-small {
+    margin: 10px;
+}
+
+
+.article-details {
+    display        : flex;
+    flex-flow      : column wrap;
+    justify-content: center;
+}
+
+.select-options {
+    padding: 5px;
+}
+
+.single-option {
+    padding: 0 20px;
+}
+
+.article-header-name {
+    position: relative;
+}
+
+.article-header-name::before {
+    content: ''; //задължително трябва да сложим content пропърти на before елементи, дори да е празно съдържание
+    background: url('https://softuni.bg/Content/images/curriculum/entry-module-header.svg');
+    background-repeat: no-repeat; //за да не се повтаря
+    position:absolute; //в parent с position: relative;
+    left:0; 
+    width: 50px;
+    height: 70px;
+}

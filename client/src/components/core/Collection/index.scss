@@ -1,0 +1,93 @@
+.new-collection  {
+    .mySwiper .swiper-slide {
+        // width: 25%;
+        height: 100%;
+        opacity: 1;
+    } 
+    .product-options{
+        display:flex;
+        align-items:center;
+        justify-content: center;
+        .product-price-inner{
+            flex: 1 1 30%;
+            align-items: center;
+            justify-content: center;
+        }
+        product-add{
+            flex: 1 1 70%;
+            align-items: center;
+            justify-content: center;
+            padding: 2em 0;
+           .btn-pink{
+               width: 100%;
+           }
+        }
+    }
+ 
+    .product-image {
+        position: relative;
+        .semi-transparent-button {
+            top: 35%;
+            left:15%;
+            margin: 0 auto;
+            padding: 0.5em;
+            height: 15%;
+            width: 100%;
+            max-width: 8em;
+            background: #fff; /* fallback color for old browsers */background: rgba(255, 255, 255, 0.5);
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: all 0.3s ease-out;
+            border: none;
+          }
+    }
+    .product-inner:hover{
+        padding:2px;
+        border-color: var(--color-pink-default);
+    }
+    .header-section{
+        position: relative;
+        h2 {
+            text-transform: uppercase;
+        }
+        h2:after {
+            content: '';
+            height: 2px;
+            width: 50px;
+            background: var(--color-pink-default, lightgray);
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            margin-left: -25px;
+        }
+    }
+    .product-inner{
+        height: 100%;
+    }
+     .product-image {
+         height: 70%;
+     }
+     .product-info {
+        height: 30%;
+        .product-name {
+            height: 50%;
+        }
+        .product-bar{
+            height: 50%;
+        }
+    }
+
+  }
+  .product-options {
+      display:flex;
+      flex-flow: column wrap;
+      align-items: center;
+      justify-content: center;
+      .btn-pink {
+          width: 60%;
+          padding: 0.5em 0.8em;
+      }
+  }
+  

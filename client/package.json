@@ -1,0 +1,57 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "React example starter project",
+  "keywords": [
+    "react",
+    "starter"
+  ],
+  "proxy": "http://localhost:9999",
+  "main": "src/index.js",
+  "dependencies": {
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "@expo-google-fonts/ruthie": "0.2.0",
+    "@fontsource/cinzel-decorative": "4.5.0",
+    "@fontsource/ruthie": "4.5.1",
+    "@mui/icons-material": "^5.0.1",
+    "@mui/material": "^5.0.1",
+    "@react-yuki/ui": "0.0.39",
+    "axios": "0.21.1",
+    "bootstrap": "^5.1.1",
+    "node-sass": "^6.0.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-icons": "^4.2.0",
+    "react-id-swiper": "4.0.0",
+    "react-image-gallery": "1.2.7",
+    "react-pro-sidebar": "^0.7.1",
+    "react-redux": "7.2.4",
+    "react-responsive-carousel": "3.2.21",
+    "react-responsive-sidebar": "^0.1.16",
+    "react-router-dom": "5.2.0",
+    "react-scripts": "4.0.3",
+    "react-stripe-checkout": "^2.6.3",
+    "reactstrap": "^8.10.0",
+    "redux-thunk": "2.3.0",
+    "shortid": "^2.2.16",
+    "stripe": "^8.176.0",
+    "swiper": "6.8.4"
+  },
+  "devDependencies": {
+    "@babel/runtime": "7.15.3",
+    "css-loader": "^6.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

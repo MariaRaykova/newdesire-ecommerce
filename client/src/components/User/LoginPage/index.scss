@@ -1,0 +1,26 @@
+
+.login {
+    margin         : 20px;
+    height: 70vh;
+    display        : flex;
+    flex-direction: column;
+    /*подрежда заглавие, съдърж.и фуутър на един ред*/
+    justify-content: space-around;
+    align-items    : center;
+    border         : 1px solid white;
+}
+
+form {
+    margin-top:3em;
+    display: flex;
+    flex-direction: column;
+    align-items    : center;
+    
+    label, p {
+     margin: 0.5em;
+    }
+    input{
+        margin-left:10px;
+    }
+
+}

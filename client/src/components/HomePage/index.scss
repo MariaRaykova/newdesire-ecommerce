@@ -1,0 +1,72 @@
+@mixin bp($point) {
+    @if $point==desktop-large {
+        @media (min-width: 1200px) {
+            @content;
+        }
+    }
+    @else if $point==desktop {
+        @media (min-width: 992px) {
+            @content;
+        }
+    }
+    @else if $point==tablet {
+        @media (min-width: 768px) {
+            @content;
+        }
+    }
+    @else if $point==mobile {
+        @media (max-width: 767.9px) {
+            @content;
+        }
+    }
+    @else if $point==phone {
+        @media (max-width: 650px) {
+            @content;
+        }
+    }
+}
+ 
+
+    @include bp(mobile) {
+        .new-section {
+        display:flex;
+        flex-flow: column wrap;
+        .home-text {
+            max-width: 60%;
+            height: 360px;
+        }
+        .home-image {
+            max-width: 60%;
+            height: 50%;
+        }
+    }
+    }
+    .home-text {
+        max-width: 35%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex-flow:column wrap;
+        // flex: 1 1 35%;
+        // flex-flow: column;
+        // align-items: center;
+        padding: 15px;
+    }
+    .home-image {
+        max-width: 35%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-flow:column wrap;
+
+        // padding:15px;
+        // display: flex;
+        // flex: 1 1 35%;
+        overflow:hiddden;
+        
+        img{
+            width: 100%;
+            height: auto;
+           
+        }
+    }

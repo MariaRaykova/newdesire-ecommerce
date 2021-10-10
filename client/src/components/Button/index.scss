@@ -1,0 +1,37 @@
+.btn-white {
+    background: white;
+    border: none;
+    color: var(--color-pink-default, lightgray);
+}
+.btn-white:hover {
+    background: lightgrey;
+}
+.btn-pink {
+    background: var(--color-pink-default, lightgray);
+    border: none;
+    color: white
+}
+.btn-pink:hover {
+    box-shadow: 0 0 12px 3px #a8193a;
+}
+.btn-outline-light {
+    border: 2px solid white;
+    background: transparent;
+    color: white;
+}
+.btn-outline-light:hover {
+    border: 2px solid lightgrey;
+    color: lightgrey;
+}
+.btn.btn-outline-light a,
+.btn.btn-outline-primary a { /*долу (.site-header-content-list-products>a) сме декларирали сиво за този текст и без двата селектора другия имаше повече тежест и оставаха сиви...за това сложихме и двата класа */
+    color: white;
+} 
+.btn-outline-primary {
+    background: linear-gradient(90deg, rgba(250,94,92,1) 0%, rgba(210,52,91,1) 100%);
+    box-shadow: 0 0 24px 3px #c23254;
+    color: white;
+}
+.btn-outline-primary:hover {
+    box-shadow: 0 0 12px 3px #a8193a;
+}
