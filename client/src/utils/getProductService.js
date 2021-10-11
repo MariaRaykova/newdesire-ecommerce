@@ -8,9 +8,7 @@ export const getCategories = () => {
 export const getProducts = () => {
   return fetch(`${API}/api/product`)
     .then((res) => {
-      console.log("ot getProducts res : " + res)
-      console.log("ot getProducts parse : " + JSON.parse(res))
-      console.log("ot getProducts stringify : " + JSON.stringify(res))
+      console.log("ot getProducts res : " + JSON.stringify(res))
       return res.json()
     })
     .catch((err) => {
