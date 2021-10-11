@@ -7,8 +7,12 @@ const bodyParser = require('body-parser');
 
 app.use(function(req, res, next) {
     res.setHeader("Content-Type", "application/json");
+    req.accepts('application/json');
     next();
 });
+// 'Accept': 'application/json',
+// 'Content-Type': 'application/json',
+
 // prevents cors headaches when your react app calls your api
 // serves the built version of your react app
 app.use(express.static(path.join(__dirname, '/client/build')))
@@ -21,6 +25,11 @@ app.get('*', (req, res) => {
     // res.end();  
     // next();
 });
+app.get('*',function(req, res) {
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.end('okay');
+});
+
 dbConnection().then(() => {
   
     require('./config/express')(app);
