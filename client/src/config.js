@@ -1,4 +1,4 @@
-// export const API = ""; //http://localhost:9999
+export const API = ""; //http://localhost:9999
 
 export const STRIPE_PUBLISHABLE ="pk_test_51JdAdCF4Yqr45yd9fJBb7uulrO4Q53z6yUmxWbmKZwij2gbxlIzXZpZCdHzp6wD2jOyzfiO67n5BEKDbKCYwcF3Z00LU9IjWkv";
 
