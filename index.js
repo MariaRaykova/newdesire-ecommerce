@@ -15,6 +15,7 @@ const bodyParser = require('body-parser');
 app.use(function(req, res, next) {
      // Website you wish to allow to connect
      res.setHeader('Access-Control-Allow-Origin', '*');
+     res.setHeader('Content-Encoding', 'gzip');
      res.setHeader('Access-Control-Expose-Headers', 'Content-Type, Authorization,Origin,X-Requested-With,Accept');
      // Request methods you wish to allow
      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -27,7 +28,7 @@ app.use(function(req, res, next) {
      res.setHeader('Access-Control-Allow-Credentials', true);
  
      res.setHeader("Content-Type", "application/json");
-     res.writeHead(200, { 'content-encoding': 'gzip' });
+ 
      // Pass to next layer of middleware
      next();
 
