@@ -12,7 +12,7 @@ app.use(function(req, res, next) {
      res.setHeader('Access-Control-Expose-Headers', 'Content-Type, Authorization,Origin,X-Requested-With,Accept');
      // Request methods you wish to allow
      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-     res.setHeader('Content-Encoding', 'gzip');
+    //  res.setHeader('Content-Encoding', 'gzip');
      // Request headers you wish to allow
     //  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
  
