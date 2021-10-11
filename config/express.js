@@ -5,7 +5,11 @@ const cors = require('cors');
 const secret = 'secret';
 
 module.exports = (app) => {
- 
+    corsOptions = {
+        origin: "https://newdesire.herokuapp.com/",
+        optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+     };
+     app.use(cors(corsOptions));
     // app.use(cors({
     //     origin: '*',
     //     // allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'X-Requested-With', 'Accept'],
@@ -13,7 +17,7 @@ module.exports = (app) => {
     //     exposedHeaders: 'Authorization', //явно трябва да му кажем 
     //     methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
     // }));
-    app.use(cors())
+    // app.use(cors())
     
     // app.use(bodyParser.json());
     //тези двете вместо body parser

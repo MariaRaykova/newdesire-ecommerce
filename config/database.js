@@ -1,12 +1,29 @@
 const mongoose = require('mongoose');
 const config = require('./config');
+const MongoClient = require("mongodb").MongoClient;
 const dbURL = 'mongodb+srv://mraykova:maria123@cluster0.qlvbe.mongodb.net/eshop?retryWrites=true&w=majority';
 console.log("mongo " + dbURL)
 
 //const mongoUri = "mongodb+srv://" + process.env.MONGO_USR + ":" + process.env.MONGO_PASS + "@" + process.env.MONGO_URL + "/" + process.env.MONGO_DB + "?retryWrites=true&w=majority";
-module.exports = () => {
-    return mongoose.connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true });
-};
+// module.exports = () => {
+//     return mongoose.connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true });
+// };
+
+
+const client = await new MongoClient(dbURL, {
+   useNewUrlParser: true,
+   useUnifiedTopology: true
+});
+
+
+// mongoose.connection.once('open', () => {
+//    console.log('MongoDB Connected');
+// });
+// mongoose.connection.on('error', (err) => {
+//    console.log('MongoDB connection error: ', err);
+// });
+
+return client.connect();
 
 // const env = require('../environments/environment');
 

@@ -57,6 +57,8 @@ app.get('*',function(req, res) {
     res.end('okay');
 });
 app.use(bodyParser.json());
+
+
 dbConnection().then(() => {
   
     require('./config/express')(app);
