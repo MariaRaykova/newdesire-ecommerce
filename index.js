@@ -5,21 +5,14 @@ const app = require('express')();
 const path = require('path');
 const bodyParser = require('body-parser');
 
-// access-control-allow-origin: *
-// access-control-expose-headers: Content-Type,Authorization,Origin,X-Requested-With,Accept
-// Add headers before the routes are defined
-// app.use(function (req, res, next) {
-
-   
-// });
 app.use(function(req, res, next) {
      // Website you wish to allow to connect
      res.setHeader('Access-Control-Allow-Origin', '*');
-     res.setHeader('Content-Encoding', 'gzip');
+  
      res.setHeader('Access-Control-Expose-Headers', 'Content-Type, Authorization,Origin,X-Requested-With,Accept');
      // Request methods you wish to allow
      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-     
+     res.setHeader('Content-Encoding', 'gzip');
      // Request headers you wish to allow
     //  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
  
@@ -33,10 +26,10 @@ app.use(function(req, res, next) {
      next();
 
 });
-app.use(function(req, res, next) {
-    res.set('Content-Type', 'text/html');
-    next();
-});
+// app.use(function(req, res, next) {
+//     res.set('Content-Type', 'text/html');
+//     next();
+// });
 // 'Accept': 'application/json',
 // 'Content-Type': 'application/json',
 
