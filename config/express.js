@@ -5,6 +5,7 @@ const cors = require('cors');
 const secret = 'secret';
 
 module.exports = (app) => {
+ 
     // app.use(cors({
     //     origin: '*',
     //     // allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'X-Requested-With', 'Accept'],

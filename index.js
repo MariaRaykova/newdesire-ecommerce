@@ -5,10 +5,35 @@ const app = require('express')();
 const path = require('path');
 const bodyParser = require('body-parser');
 
+// access-control-allow-origin: *
+// access-control-expose-headers: Content-Type,Authorization,Origin,X-Requested-With,Accept
+// Add headers before the routes are defined
+// app.use(function (req, res, next) {
+
+   
+// });
 app.use(function(req, res, next) {
-    res.setHeader("Content-Type", "application/json");
-    res.writeHead(200, { 'Content-Type': 'text/html' });
-    req.headers['content-type'] = 'text/html';
+     // Website you wish to allow to connect
+     res.setHeader('Access-Control-Allow-Origin', '*');
+     res.setHeader('Access-Control-Expose-Headers', 'Content-Type,Authorization,Origin,X-Requested-With,Accept');
+     // Request methods you wish to allow
+     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+ 
+     // Request headers you wish to allow
+     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+ 
+     // Set to true if you need the website to include cookies in the requests sent
+     // to the API (e.g. in case you use sessions)
+     res.setHeader('Access-Control-Allow-Credentials', true);
+ 
+     res.setHeader("Content-Type", "application/json");
+
+     // Pass to next layer of middleware
+     next();
+
+});
+app.use(function(req, res, next) {
+    res.set('Content-Type', 'text/html');
     next();
 });
 // 'Accept': 'application/json',
