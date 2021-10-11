@@ -20,7 +20,7 @@ app.use(function(req, res, next) {
      // to the API (e.g. in case you use sessions)
      res.setHeader('Access-Control-Allow-Credentials', true);
  
-     res.setHeader("Content-Type", "application/json");
+     res.setHeader("Content-Type", "text/html");
  
      // Pass to next layer of middleware
      next();
