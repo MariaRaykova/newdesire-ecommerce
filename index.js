@@ -6,16 +6,23 @@ const path = require('path');
 const bodyParser = require('body-parser');
 app.use(function(req, res, next) {
     res.setHeader("Content-Type", "application/json");
-    res.writeHead(200, { 'Content-Type': 'text/html' });
+
     next();
 });
+
+
 //     prevents cors headaches when your react app calls your api
 // serves the built version of your react app
 app.use(express.static(path.join(__dirname, '/client/build')))
 console.log(__dirname, '/client/build')
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/client/build/index.html'))
-})
+ 
+    res.writeHeader(200, {"Content-Type": "text/html"});  
+    // res.write(html);  
+    // res.end();  
+    // next();
+});
 // // parse application/x-www-form-urlencoded
 // app.use(bodyParser.urlencoded({ extended: false }))
 // // parse application/json
@@ -26,9 +33,6 @@ dbConnection().then(() => {
     require('./config/express')(app);
 
     require('./config/routes')(app);
-
-
-
     app.use(function (err, req, res, next) {
         console.error(err);
         res.status(500).send(err.message);

@@ -8,10 +8,10 @@ module.exports = (app) => {
         origin: '*',
         // allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'X-Requested-With', 'Accept'],
         // exposedHeaders: ['Content-Type', 'Authorization', 'Origin', 'X-Requested-With', 'Accept'],
-      exposedHeaders: 'Authorization', //явно трябва да му кажем 
+        exposedHeaders: 'Authorization', //явно трябва да му кажем 
         methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
     }));
-    app.use(cors())
+    // app.use(cors())
     app.use(express.json());
 
     app.use(express.urlencoded({
