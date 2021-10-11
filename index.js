@@ -4,6 +4,7 @@ const express = require('express');
 const app = require('express')();
 const path = require('path');
 const bodyParser = require('body-parser');
+const port  = process.env.PORT || 9999;
 
 app.use(function(req, res, next) {
      // Website you wish to allow to connect
@@ -67,7 +68,7 @@ dbConnection().then(() => {
         console.log('*'.repeat(90))
     });
    
-    app.listen(config.port, console.log(`Listening on port ${config.port}!`))
+    app.listen(port, console.log(`Listening on port ${port}!`))
 
 }).catch(console.error);
 
