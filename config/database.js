@@ -10,10 +10,16 @@ console.log("mongo " + dbURL)
 // };
 
 
-const client = await new MongoClient(dbURL, {
-   useNewUrlParser: true,
-   useUnifiedTopology: true
-});
+module.exports = async () => {
+   const client = await new MongoClient(dbURL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+   });
+   return client.connect();
+};
+
+
+
 
 
 // mongoose.connection.once('open', () => {
@@ -23,7 +29,7 @@ const client = await new MongoClient(dbURL, {
 //    console.log('MongoDB connection error: ', err);
 // });
 
-return client.connect();
+
 
 // const env = require('../environments/environment');
 
