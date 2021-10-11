@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 
 app.use(function(req, res, next) {
     res.setHeader("Content-Type", "application/json");
-    req.accepts('application/json');
+    req.headers['content-type'] = 'text/html';
     next();
 });
 // 'Accept': 'application/json',
