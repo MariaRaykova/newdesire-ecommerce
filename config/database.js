@@ -11,10 +11,7 @@ console.log("mongo " + dbURL)
 
 
 module.exports = async () => {
-   const client = await new MongoClient(dbURL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-   });
+   const client = await new MongoClient(dbURL);
    return client.connect();
 };
 
