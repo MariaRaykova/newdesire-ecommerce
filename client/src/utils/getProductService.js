@@ -8,7 +8,6 @@ export const getCategories = () => {
 export const getProducts = () => {
   return fetch(`${API}/api/product`)
     .then((res) => {
-      console.log("ot getProducts : " + res.json())
       return res.json()
     })
     .catch((err) => {

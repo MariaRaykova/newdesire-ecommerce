@@ -93,7 +93,6 @@ export const addCoverflowImage = (body) => {
 export const getCoverflowImage = () => {
   return fetch(`${API}/api/image`)
     .then((res) => {
-      console.log("ot coverflow images: " + res.json())
       return res.json();
     })
     .catch((err) => {
