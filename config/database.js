@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const config = require('./config');
-const dbURL = process.env.MONGODB_URI || 'mongodb+srv://mraykova:maria123@cluster0.qlvbe.mongodb.net/eshop?retryWrites=true&w=majority';
+const dbURL = 'mongodb+srv://mraykova:maria123@cluster0.qlvbe.mongodb.net/eshop?retryWrites=true&w=majority';
 console.log("mongo " + dbURL)
 
 module.exports = () => {
