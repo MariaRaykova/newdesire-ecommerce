@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 
 app.use(function(req, res, next) {
     res.setHeader("Content-Type", "application/json");
+    res.writeHead(200, { 'Content-Type': 'text/html' });
     req.headers['content-type'] = 'text/html';
     next();
 });
