@@ -20,18 +20,18 @@ app.use(function(req, res, next) {
      // to the API (e.g. in case you use sessions)
      res.setHeader('Access-Control-Allow-Credentials', true);
  
-     res.setHeader("Content-Type", "text/html");
+     //res.setHeader("Content-Type", "text/html");
  
      // Pass to next layer of middleware
      next();
 
 });
-app.get('*', function (req, res, next) {
+// app.get('*', function (req, res, next) {
  
-    res.set('Content-Encoding', 'gzip');
-    // res.set('Content-Type', 'text/javascript');
-    next();
-  });
+//     res.set('Content-Encoding', 'gzip');
+//     // res.set('Content-Type', 'text/javascript');
+//     next();
+//   });
 // app.use(function(req, res, next) {
 //     res.set('Content-Type', 'text/html');
 //     next();
@@ -42,9 +42,9 @@ app.get('*', function (req, res, next) {
 // prevents cors headaches when your react app calls your api
 // serves the built version of your react app
 app.use(express.static(path.join(__dirname, '/client/build')))
-console.log(__dirname, '/client/build')
+console.log(__dirname+ '/client/build')
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/client/build/index.html'))
+    res.sendFile(path.resolve(__dirname,'client', 'build', 'index.html'));
  
     // res.writeHeader(200, {"Content-Type": "text/html"});  
     // res.write(html);  
