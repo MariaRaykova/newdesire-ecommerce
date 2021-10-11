@@ -26,6 +26,12 @@ app.use(function(req, res, next) {
      next();
 
 });
+app.get('*', function (req, res, next) {
+ 
+    res.set('Content-Encoding', 'gzip');
+    // res.set('Content-Type', 'text/javascript');
+    next();
+  });
 // app.use(function(req, res, next) {
 //     res.set('Content-Type', 'text/html');
 //     next();
