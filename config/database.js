@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 const config = require('./config');
+const dbURL = process.env.MONGODB_URI || 'mongodb+srv://mraykova:maria123@cluster0.qlvbe.mongodb.net/eshop?retryWrites=true&w=majority';
+console.log("mongo " + dbURL)
 
 module.exports = () => {
-    return mongoose.connect(config.dbURL, { useNewUrlParser: true, useUnifiedTopology: true });
+    return mongoose.connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true });
 };
 
 // const env = require('../environments/environment');
