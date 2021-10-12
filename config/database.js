@@ -4,7 +4,6 @@ const config = require('./config');
 const dbURL = 'mongodb+srv://mraykova:maria123@cluster0.qlvbe.mongodb.net/eshop?retryWrites=true&w=majority';
 
 //const dbURL = "mongodb+srv://mraykova:maria123@cluster0.qlvbe.mongodb.net/:27017,cluster0-mdyjt.mongodb.net:27017,cluster0-mdyjt.mongodb.net:27017/eshop?ssl=true&replicaSet=cluster0&authSource=admin&retryWrites=true&w=majority:27017,cluster0-mdyjt.mongodb.net:27017,cluster0-mdyjt.mongodb.net:27017/ehop?ssl=true&replicaSet=cluster0&authSource=admin&retryWrites=true&w=majority"
-console.log("abe verno vlizam li tuk??? "+dbURL)
 //const mongoUri = 'mongodb+srv://" + process.env.MONGO_USR + ":" + process.env.MONGO_PASS + "@" + process.env.MONGO_URL + "/" + process.env.MONGO_DB + "?retryWrites=true&w=majority";
 module.exports = () => {
     return mongoose.connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -15,11 +14,6 @@ module.exports = () => {
 //    const client = await new MongoClient(dbURL);
 //    return client.connect();
 // };
-
-
-
-
-
 // mongoose.connection.once('open', () => {
 //    console.log('MongoDB Connected');
 // });

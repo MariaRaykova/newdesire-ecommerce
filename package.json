@@ -10,7 +10,6 @@
     "server": "node index.js",
     "start": "node index.js"
   },
-  "proxy": "http://localhost:9999",
   "author": "",
   "license": "ISC",
   "dependencies": {
