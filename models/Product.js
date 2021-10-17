@@ -24,10 +24,10 @@ const productSchema = new Schema({
         type: Number,
         required: true,
     },
-    category: [{
-        type: ObjectId,
-        ref: "Category"
-    }],
+    category: {
+        type: String,
+        required: true,
+    },
     new: {
         type: Boolean,
     }

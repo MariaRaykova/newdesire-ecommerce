@@ -27,7 +27,6 @@ export const cartReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case GET_CART_PRODUCTS:
-  
       if(!action.payload.products){
         return {
           ...state,

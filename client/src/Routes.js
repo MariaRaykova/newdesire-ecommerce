@@ -15,7 +15,7 @@ import AddImage from "./components/Admin/AddImage";
 import ManageCoverflow from "./components/Admin/ManageCoverflow";
 import Shop from "./components/ShopPage";
 import ContactPage from "./components/ContactPage";
-
+import PhotoPage from "./components/PhotoPage";
 const Routes = () => {
   const context = useContext(AuthContext);
   return (
@@ -91,6 +91,7 @@ const Routes = () => {
             <Redirect to="/" />
           )}
         </Route>
+        <Route path="/photo" exact component={PhotoPage} />
       </Switch>
     </BrowserRouter>
   );

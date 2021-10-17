@@ -65,7 +65,6 @@ export const prodReducer = (state = initialState, action) => {
         error: null
       };
     case GET_ALL_CATEGORIES_SUCCESS:
-
       return {
         loading: false,
         categories: action.payload

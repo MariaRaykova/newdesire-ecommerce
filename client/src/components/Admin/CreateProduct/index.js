@@ -13,8 +13,7 @@ const CreateProduct = () => {
   const history = useHistory();
   const context = useContext(AuthContext);
   const [selectedCategoryId, setSelectedCategoryId] = useState("");
- 
-const [product, setProduct] = useState()
+  const [selectedCategoryName, setSelectedCategoryName] = useState("");
 
   const products = useSelector((state) => state.productsReducer.products);
   const categories = useSelector((state) => state.productsReducer.categories);
@@ -55,7 +54,8 @@ const [product, setProduct] = useState()
   //   });
   // };
   const handleChangeCategory = (e) => {
-    setSelectedCategoryId(e.target.value);
+    setSelectedCategoryId(e.target.value._id);
+    setSelectedCategoryName(e.target.value.name)
   };
 
   const onCreateSubmitHandler = (e) => {
@@ -67,7 +67,7 @@ const [product, setProduct] = useState()
     const price = e.target.price.value;
     const quantity = e.target.quantity.value;
   
-    createProduct({ name, description, imageUrl, selectedCategoryId, price, quantity })
+    createProduct({ name, description, imageUrl, selectedCategoryId, selectedCategoryName, price, quantity })
     .then((res) => {
         history.push('/admin/product/create')
         // dispatch(clearUrl())
@@ -85,7 +85,6 @@ const [product, setProduct] = useState()
     const handleCheckNewItem = (e) =>{
       if (e.target.checked){
         setId(e.target.value)
-  
       }
     }
   if(currentProduct?._id){
@@ -182,15 +181,12 @@ const [product, setProduct] = useState()
               </p>
               <p className="field">
                 <label htmlFor="category">Category</label>
-                <select
-                  onChange={handleChangeCategory}
-                  defaultValue="Categories"
-                >
+                <select onChange={handleChangeCategory} defaultValue="Categories" >
                   <option>Please select</option>
                   {categories?.map((c) => (
                     <option
                       key={c._id}
-                      value={c._id}
+                      value={c}
                       className="list-group-item d-flex justify-content-between align-items-center"
                       id={c._id}
                     >

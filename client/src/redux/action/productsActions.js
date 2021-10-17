@@ -1,32 +1,61 @@
+import {API} from "../../config";
 import {
   getProduct,
-  getProducts,
+  listProducts,
   getCategories,
   getProductsByCategory,
 } from "../../utils/getProductService";
 import { uploadImage, createImage, addCoverflowImage,  getCoverflowImage} from "../../utils/adminHandlers"
 
-export const getAllProducts = () => (dispatch) => {
-  dispatch({
+//export const getAllProducts = () => (dispatch) => {
+  // dispatch({
+  //   type: GET_ALL_PRODUCTS_REQUEST
+  // });
+  // listProducts()
+  //   .then((res) => {
+ 
+  //     dispatch({
+  //       type: GET_ALL_PRODUCTS_SUCCESS,
+  //       payload: res
+  //     });
+  //     return res;
+  //   })
+  //   .catch((error) => {
+  //     dispatch({
+  //       type: GET_ALL_PRODUCTS_FAIL,
+  //       payload: { error }
+  //     });
+  //     return error;
+  //   });
+  export const getAllProducts = (  category = '', searchKeyword = '', sortOrder = '') => (dispatch) => {
+     dispatch({
     type: GET_ALL_PRODUCTS_REQUEST
   });
-  getProducts()
-    .then((res) => {
-      console.log("ot getProducts : " + JSON.stringify(res))
-      dispatch({
-        type: GET_ALL_PRODUCTS_SUCCESS,
-        payload: res
-      });
-      return res;
-    })
-    .catch((error) => {
-      dispatch({
-        type: GET_ALL_PRODUCTS_FAIL,
-        payload: { error }
-      });
-      return error;
-    });
-};
+  
+      fetch(
+        `${API}/api/product?category=` +
+          category +
+          `&searchKeyword=` +
+          searchKeyword +
+          `&sortOrder=` +
+          sortOrder).then(res=>res.json()).then((res) => {
+           
+            dispatch({
+              type: GET_ALL_PRODUCTS_SUCCESS,
+              payload: res
+            });
+            return res;
+          })
+          .catch((error) => {
+            dispatch({
+              type: GET_ALL_PRODUCTS_FAIL,
+              payload: { error }
+            });
+            return error;
+         });
+        }
+    
+
 export const getAllCategories = () => (dispatch) => {
   dispatch({
     type: GET_ALL_CATEGORIES_REQUEST
@@ -37,7 +66,6 @@ export const getAllCategories = () => (dispatch) => {
         type: GET_ALL_CATEGORIES_SUCCESS,
         payload: res
       });
-      
       return res;
     })
     .catch((error) => {
@@ -160,7 +188,6 @@ export const getCoverflowImageAction = () => (dispatch)=>{
   });
   getCoverflowImage()
   .then((res) => {
-    console.log("ot getCoverflowImage : " + res)
       dispatch({
         type: GET_COVERFLOW_IMAGE_SUCCESS,
         payload:res

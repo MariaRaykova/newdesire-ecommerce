@@ -47,22 +47,28 @@ export default function SwiperCollection() {
           <h2>New Collection</h2>
           </div>
           <Swiper
-            slidesPerView={5}
-            spaceBetween={30}
+             slidesPerView={3}
+            spaceBetween={10}
             freeMode={true}
             // pagination={{
             //   "clickable": true
             // }}
             loop
-            style={{ 'width': '1200px', 'height': '420px' }} 
+            breakpoints={{
+              780: {
+                slidesPerView: 5,
+                spaceBetween:30,
+              },
+            }}
             className="mySwiper">
+                    {/* style={{ 'max-width': '1200px', 'height': '420px' }}  */}
             {products.filter(product => {
               if(product.new){
                 return product
               }
             }          
             ).map((p) => (
-              <SwiperSlide key={p._id} >
+              <SwiperSlide key={p._id} className="slide">
        <div className="product-inner">
         <div className="product-image">
           {p.images ?  <img src={p.images[0]}  /> : null}

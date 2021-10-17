@@ -58,6 +58,15 @@ header {
             //     src: font("Blackstand"), url("../../font/Blackstand.woff") format("woff");
             // }
         }
+        .logo-boutique {
+            font-family: "Cinzel", serif;
+            font-size: 15px;
+            text-align: end;
+            display:flex;
+            align-items: flex-start;
+            justify-content: flex-end;
+        }
+        
         color: var(--color-blue-default, white);
     }
 
@@ -81,13 +90,10 @@ header {
         }
     }
 }
-
-
-.logo-boutique {
-    font-family: "Cinzel", serif;
-    font-size: 15px;
-    text-align: end;
+.welcome {
+    font-size: 12px;
 }
+
 
 .btn {
     border-radius: 20px;
@@ -98,20 +104,20 @@ header {
 .btn:hover {
     cursor: pointer;
 }
-.search {
-    background-color: lightpink;
-    flex: 1 1 auto;
-    /*или съкратено flex: 1*/
-    display: inline-flex;
-    margin: 0 20px;
-}
+// .search {
+//     background-color: lightpink;
+//     flex: 1 1 auto;
+//     /*или съкратено flex: 1*/
+//     display: inline-flex;
+//     margin: 0 20px;
+// }
 
-.search input {
-    flex: 1;
-    /*съкратено от flex: 1 1 auto – ще се разшири до края на контейнера, а flex: 0 1 auto колкото е content */
-    background: transparent;
-    border-radius: 10px;
-}
+// .search input {
+//     flex: 1;
+//     /*съкратено от flex: 1 1 auto – ще се разшири до края на контейнера, а flex: 0 1 auto колкото е content */
+//     background: transparent;
+//     border-radius: 10px;
+// }
 
 #menuToggle {
     display: none;
@@ -192,6 +198,17 @@ header {
             transform-origin: 0% 100%;
         }
     }
+}
+.sub-menu{
+   
+   
+    display:flex;
+    flex-flow: column;
+    justify-content: flex-start;
+}
+.sub-menu a{
+    font-size:14px;
+    margin-left:10px;
 }
 /* Make this absolute positioned at the top left of the screen */
 #menu {

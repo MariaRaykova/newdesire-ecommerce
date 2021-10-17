@@ -10,6 +10,30 @@ module.exports = {
       })
       .catch(next);
   },
+  getSpec: (req, res, next) => {
+    const category = req.query.category ? { category: req.query.category } : {};
+    const searchKeyword = req.query.searchKeyword
+      ? {
+          name: {
+            $regex: req.query.searchKeyword,
+            $options: 'i',
+          },
+        }
+      : {};
+    const sortOrder = req.query.sortOrder
+      ? req.query.sortOrder === 'lowest'
+        ? { price: 1 }
+        : { price: -1 }
+      : { _id: -1 };
+    models.Product.find({ ...category, ...searchKeyword }).sort(
+      sortOrder
+    ).then((product) => {
+       console.log(product)
+      return res.send(product);
+    })
+    .catch(next);
+   
+  },
   getOne: (req, res, next) => {
     const id = req.params.id;
     models.Product.find({ _id: id })
@@ -21,15 +45,37 @@ module.exports = {
   },
   getByCategory: (req, res, next) => {
     models.Product.find({ category: req.params.category })
-      .populate('category')
       .then((products) => {
+        console.log("products" +products)
         return res.send(products);
       })
       .catch(next);
   },
+  // listSearch: (req, res, next) => {
+  //   // create query object to hold search value and category value
+  //   const query = {};
+  //   console.log("req.query.search"+req.query.search)
+  //   // assign search value to query.name
+  //   if (req.query.search) {
+  //       query.name = { $regex: req.query.search, $options: 'i' };
+  //       console.log("query.name "+query.name )
+  //       // assigne category value to query.category
+  //       // if (req.query.category && req.query.category != 'All') {
+  //       //     query.category = req.query.category;
+  //       // }
+  //       // find the product based on query object with 2 properties
+  //       // search and category
+  //       models.Product.find(query, (err, products))
+  //         .then((products) => {
+            
+  //           return res.send(products);
+  //         })
+  //         .catch(next);
+  //   }
+  // },
   post: (req, res, next) => {
-    const { name, description, imageUrl, selectedCategoryId, price, quantity } = req.body;
-      models.Product.create({ name, description , images: imageUrl, price, quantity, category: selectedCategoryId })
+    const { name, description, imageUrl, selectedCategoryId,selectedCategoryName, price, quantity } = req.body;
+      models.Product.create({ name, description , images: imageUrl, price, quantity, category: selectedCategoryName })
       .then((createdProduct) => {
         models.Category.updateOne({ _id: selectedCategoryId }, { $push: { products: createdProduct } })
         res.send(createdProduct);

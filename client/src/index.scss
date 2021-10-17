@@ -12,11 +12,14 @@
     --font-size-body-big: 18px;
     --font-size-body-huge: 20px;
     --layout-main-width: 1200px;
-    --color-pink-default: #ebd8d2; //#efd6d6;
-    --color-blue-default: #1B3D52;
+    --color-pink-default: #ebd8d2; 
     --spacing-layout-elements: 2em;
-
+    --color-powder-default: #d7c7c0; 
+    --color-pinkold-default:#efd6d6;
+    --color-blue-default: #1B3D52;
+    --color-dark-pink-default: #9c918e;
 }
+ 
 @font-face {
     font-family: "blackstand";
     src: url('./font/Blackstand.ttf');

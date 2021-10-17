@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink , Link} from "react-router-dom";
 import "./index.scss";
 import { useContext } from "react";
 import AuthContext from "../../contexts/AuthContext";
@@ -7,19 +7,28 @@ import CartContext from "../../contexts/CartContext";
 import { useDispatch, useSelector } from "react-redux";
 import CartIcon from "../Cart/CartIcon"
 import CartDropdown from "../Cart/CartDropdown"
-import {showCart, loadCart} from  "../../redux/action/cartActions"
+import {showCart, loadCart} from  "../../redux/action/cartActions";
+import { getAllCategories} from "../../redux/action/productsActions";
+
+//   <Redirect
+//   to={{
+//     pathname: "/login",
+//     search: "?utm=your+face",
+//     state: { referrer: currentLocation }
+//   }}
+// />
 
 const Header = () => {
   const context = useContext(AuthContext);
   const totalProducts = useSelector((state) => state.cartReducer.totalProducts);
   const isShownCart = useSelector((state) => state.cartReducer.showCartDropdown);
   const cartProducts = useSelector((state) => state.cartReducer.cartProducts);
+  const categories = useSelector((state) => state.productsReducer.categories);
+  // const [searchKeyword, setSearchKeyword] = useState('');
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadCart());
-
   }, []);
-
 
 const showCartDropdown =()=>{
   if(isShownCart){
@@ -35,6 +44,8 @@ const toggleCartDropdown = () =>{
     dispatch(showCart(true))
   }
 }
+
+
   const profilePage = () => {
     if (context.isLogged && context.user.role === "admin") {
       return (
@@ -58,6 +69,19 @@ const toggleCartDropdown = () =>{
       );
     }
   };
+  const categoryFilter = () => {
+    if (categories.length < 1) {
+      dispatch(getAllCategories())
+    }
+    if (categories) {
+      return categories.map((c) => (
+        <Link  to={`/product/category/${c.name}`}  key={c._id}>
+          {c.name}
+        </Link>
+      ))
+    }
+    
+  }
   return (
     <header className="site-header">
         <div id="menuToggle">
@@ -66,10 +90,10 @@ const toggleCartDropdown = () =>{
           <span></span>
           <span></span>
           <ul id="menu">
-            <p className="sidebar-header">New Desire Boutique</p>
+            <h1 className="sidebar-header">New Desire Boutique</h1>
             {context.isLogged ? (
             <ul>
-              <li>Welcome,{context.user?.name}!</li>
+              <li className="welcome">Welcome,{context.user?.name}!</li>
               {profilePage()}
             </ul>
           ) : null }
@@ -82,15 +106,13 @@ const toggleCartDropdown = () =>{
               <NavLink activeClassName="nav-link-selected" to="/shop">
                 Shop
               </NavLink>
+              <div className="sub-menu">
+              {categoryFilter()}
+              </div>
             </li>
             <li>
               <NavLink activeClassName="nav-link-selected" to="/contacts">
                 Contact Us
-              </NavLink>
-            </li>
-            <li>
-              <NavLink activeClassName="nav-link-selected" to="/admin">
-                Admin
               </NavLink>
             </li>
           </ul>
@@ -121,8 +143,8 @@ const toggleCartDropdown = () =>{
           </ul>
         </nav>
         <div className="header-buttons">
-          <NavLink to="/">
-            <i className="fa fa-search"></i>
+          <NavLink to="/shop">
+            <i className="fa fa-search" ></i>
           </NavLink>
           {/* <NavLink to="/cart"> */}
             {/* <CartIcon itemCount={totalProducts} /> */}

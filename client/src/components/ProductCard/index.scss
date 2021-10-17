@@ -17,9 +17,21 @@
     padding-bottom: 10px;
     transition: border-color .2s;
     color: var(--color-blue-default);
-    margin-top: 30px;
     padding-left: 15px;
     padding-right: 15px;
+    .product-inner {
+       
+        display:flex;
+        flex-flow: column;
+        justify-content: space-between;
+        .product-info{
+            display:flex;
+            flex-flow: column;
+            flex: 1;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
 }
 .one-fourth:hover{
     border-color: var(--color-pink-default);
@@ -39,9 +51,7 @@
         margin-bottom: 4px;
     }
 }
-.product-info {
-    position: relative;
-}
+
 
 .product-bar {
     font-size: 14px;
@@ -96,7 +106,7 @@
     display:flex;
     /*да минават на нов ред*/
     flex-wrap:wrap;
-    margin: 30px auto; /*30 отгоре и отдолу и то да е центрирано по средата*/
+    margin: 10px auto; /*30 отгоре и отдолу и то да е центрирано по средата*/
    justify-content: center;
 }
 .card {

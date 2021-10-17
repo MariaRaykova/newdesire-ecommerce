@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+.strip {
+    width: 320px;
+    height: 300px;
+  }
+  .strip img {
+    width: 100%;
+  }
+  .webcam-video {
+    position: relative;
+    width: 320px;
+    height: 300px;
+    video {
+      display: none;
+      position: absolute;
+      top: 300px;
+    }
+    button {
+      display: none;
+      position: absolute;
+      z-index: 9;
+      bottom: 60px;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      border: none;
+      background: rgba(255, 255, 255, 0.4);
+    }
+    canvas {
+      position: absolute;
+      left: 0;
+      bottom: 60px;
+    }
+    .photo-booth {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      bottom: 0;
+      overflow-x: auto;
+      .strip {
+        display: flex;
+      }
+    }
+  }
+  

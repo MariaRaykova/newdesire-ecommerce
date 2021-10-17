@@ -8,8 +8,8 @@ import PageWrapper from "../PageWrapper";
 import { emptyCart, loadCart, finishOrder } from "../../redux/action/cartActions";
 import { useDispatch, useSelector } from "react-redux";
 import CartItem from "../CartItem";
-import Checkout from "../Checkout/stripe-checkout"
-
+import Checkout from "../Checkout"
+import "./index.scss"
 // import { STRIPE_PUBLISHABLE } from '../../config';
 
 
@@ -25,21 +25,14 @@ const Cart = () => {
   const userId = authContext.user?._id ? authContext.user?._id : "";
   const cartProducts = useSelector((state) => state.cartReducer.cartProducts);
 const  isFinished = useSelector((state) => state.cartReducer.finishOrder);
+console.log("isFin? "+isFinished)
 const dispatch = useDispatch();
-// const ELEMENTS_OPTIONS = {
-//   fonts: [
-//     {
-//       cssSrc: "https://fonts.googleapis.com/css?family=Roboto"
-//     }
-//   ]
-// };
   useEffect(() => {
     dispatch(loadCart());
        if (userId !== "") {
       setUserName(authContext.user.name);
       setUserEmail(authContext.user.email);
     }
-    
     setNext(true);
   }, [isFinished]);
 
@@ -52,15 +45,19 @@ const dispatch = useDispatch();
   const onOrderSubmitHandler = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
-    const userName = e.target.name.value;
+    if(!userEmail){
+      setUserEmail(email);
+    }
+    const name = e.target.name.value;
+    if(!userName){
+      setUserName(name)
+    }
     const phone = e.target.phone.value;
     const city = e.target.city.value;
     const address = e.target.address.value;
     const totalAmount = getTotal()
-   console.log(e.target.city.value)
-   console.log(e.target.address.value)
    
-    createOrder({ email, name: userName, phone, city, address, userId, cartProducts, totalAmount }).then(
+    createOrder({ email, name, phone, city, address, userId, cartProducts, totalAmount }).then(
       (res) => {
         dispatch(emptyCart())
         setNext(false);
@@ -82,7 +79,7 @@ const dispatch = useDispatch();
         <hr />
         <ul className="list-group">
           {cartProducts?.map((i) => (
-            <CartItem  key={i.product._id} {...i} />
+            <CartItem key={i.product._id} {...i} />
           ))}
         </ul>
       </div>
@@ -164,7 +161,12 @@ const onDelete =()=>{
               </p>
               {/* {getTotal()} */}
             </fieldset>
-            {isFinished ? (<button className="btn-pink" type="submit" > Payment Successful! Finish your order</button>) : null }
+            {isFinished ? (
+              <div>
+             <h3>Payment Successful! Finish your order!</h3>
+            <button className="btn-pink order" type="submit" >Order now!</button>
+            </div>
+            ) : null}
           </form>
         </section>
       )
@@ -195,7 +197,7 @@ const onDelete =()=>{
           ) : (
             <div className="col-6">{noItemsMessage()}</div>
           )}
-            <Checkout name={userName} email={userEmail} />
+              {isFinished ? null :  (<div className="checkout-button"> <Checkout className="checkout-button" name={userName} email={userEmail} amount={getTotal()} /> </div>)}
         </div>
         </div>
       )}
