@@ -28,7 +28,6 @@ module.exports = {
     models.Product.find({ ...category, ...searchKeyword }).sort(
       sortOrder
     ).then((product) => {
-       console.log(product)
       return res.send(product);
     })
     .catch(next);
@@ -46,7 +45,7 @@ module.exports = {
   getByCategory: (req, res, next) => {
     models.Product.find({ category: req.params.category })
       .then((products) => {
-        console.log("products" +products)
+
         return res.send(products);
       })
       .catch(next);

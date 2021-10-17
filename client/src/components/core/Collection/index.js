@@ -23,10 +23,8 @@ export default function SwiperCollection() {
   const products = useSelector((state) => state.productsReducer.products);
   const dispatch = useDispatch();
  
-
-
   useEffect(() => {
-    dispatch(getAllProducts());
+    dispatch(getAllProducts("", "", ""))
   }, [])
 
 

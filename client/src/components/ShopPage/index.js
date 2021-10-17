@@ -18,21 +18,13 @@ const Shop = (props) => {
   const [sortOrder, setSortOrder] = useState('');
   const [message, setMessage] = useState();
   const category = props.match.params.category ? props.match.params.category : '';
- // const [category, setCategory] = useState("");
   useEffect(() => {
-    console.log("v useEffect")
-    // dispatch(getAllProducts(category, searchKeyword, sortOrder))
     if(props.match.params.category){
       dispatch(getAllProductsByCategory(props.match.params.category))
     }else{
-      console.log("v else")
       dispatch(getAllProducts(category, searchKeyword, sortOrder))
     }
-    // if(productsList?.length>0){
-    //   setProducts(productsList)
-    // }
   }, [message,productsList?.length,props.match.params.category]);
-  console.log(products)
   
   const showLoading = () => {
     if (loading) {
@@ -57,18 +49,12 @@ const Shop = (props) => {
     }
     
   }
-  // const showCategories =() =>{
-  //   if(category){
-  //     dispatch(getAllProducts(category, searchKeyword, sortOrder))
-  //   }
-  // }
   const clear =()=>{
     setSearchKeyword('');
     setMessage(null);
 
   }
   const submitHandler = () => {
- 
     dispatch(getAllProducts(category, searchKeyword, sortOrder))
      setMessage( `Search ${searchKeyword} results`)
   };
@@ -112,9 +98,8 @@ const Shop = (props) => {
       
           </div>
           {searchMessage()}
-          <div className="card-container">
+          <div className="card-container-shop">
             <article className="layout-flex">
-
               {/* за да заредим всички items */}
               {productsList?.map((p) => (
                 <ProductCard key={p?._id} {...p} />

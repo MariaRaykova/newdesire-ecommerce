@@ -25,7 +25,7 @@ const CreateProduct = () => {
   const dispatch = useDispatch(false);
 
   useEffect(() => {
-    dispatch(getAllProducts());
+    dispatch(getAllProducts("", "", ""));
     dispatch(getAllCategories());
     if(id){
       dispatch(getSingleProduct(id))

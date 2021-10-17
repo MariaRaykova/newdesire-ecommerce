@@ -20,10 +20,10 @@ export default function SwiperCoverflow() {
   const loading = useSelector((state) => state.productsReducer.loading);
   const coverflowImages = useSelector((state) => state.productsReducer.coverflowImages);
   const dispatch = useDispatch();
-
+  console.log(coverflowImages)
   useEffect(() => {
     dispatch(getCoverflowImageAction())
-  },[])
+  },[coverflowImages?.length])
  
 
   const showLoading = () => {
